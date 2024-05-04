@@ -1,0 +1,51 @@
+theme = "catppuccin_mocha"
+
+[editor]
+mouse = false
+true-color=true
+auto-format = true
+auto-save = true
+line-number = "relative"
+cursorline = true
+color-modes = true
+bufferline = "multiple"
+lsp.display-inlay-hints = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.indent-guides]
+render = true
+
+[keys.normal]
+"A-k" = ["goto_line_end","extend_line_below", "delete_selection", "move_line_up", "paste_before"]
+"A-j" = ["goto_line_end","extend_line_below", "delete_selection", "paste_after"]
+a = ["append_mode", "collapse_selection"]
+i = ["insert_mode", "collapse_selection"]
+C-s = ":w"
+
+[keys.normal."+"]
+m = ":run-shell-command make"
+c = ":run-shell-command cargo build"
+t = ":run-shell-command cargo check"
+
+[keys.select]
+"A-k" = ["goto_line_end","extend_line_below",  "delete_selection", "move_line_up", "paste_before", "select_mode"]
+"A-j" = ["goto_line_end","extend_line_below",  "delete_selection", "paste_after", "select_mode" ]
+
+[keys.insert]
+C-s = ":w"

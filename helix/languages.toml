@@ -1,0 +1,14 @@
+[[language]]
+name = "go"
+file-types = ["go"]
+language-servers = [ "gopls" ]
+[language-server.gopls]
+config = { analyses = { usePlaceholders = true } }
+
+[[language]]
+name = "python"
+file-types = ["python"]
+language-servers = [ "pylsp"]
+[language-server.pylsp]
+config = { analyses = { usePlaceholders = true } }
+
