@@ -15,7 +15,7 @@ export BROWSER=wslview
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(docker git nvm)
+plugins=(docker git nvm ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.profile
@@ -47,6 +47,7 @@ alias gph="git push origin HEAD:main"
 
 # initialize fasd
 eval "$(fasd --init auto)"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -59,8 +60,21 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 #[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-eval 'ssh-agent -s' > /dev/null
-
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/alean/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/alean/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/alean/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/alean/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
